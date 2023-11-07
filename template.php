@@ -30,7 +30,7 @@
 					</li>
 
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.php">
+						<a class="sidebar-link" href="main.php">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Lapor Diri</span>
             </a>
 					</li>
