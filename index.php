@@ -30,7 +30,7 @@
 						<div class="text-center mt-4">
 							<h1 class="h2">PPG FKIP</h1>
 							<p class="lead">
-								Universita Muhammadiyah Purworejo
+								Universitas Muhammadiyah Purworejo
 							</p>
 						</div>
 
@@ -40,7 +40,7 @@
                 <?php 
                 if(isset($_GET['pesan'])){
                   if($_GET['pesan']=="gagal"){
-                    echo "<div class='text-danger'>Username dan Password tidak sesuai !</div>";
+                    echo "<div class='text-danger'>No UKG dan NIK tidak sesuai !</div>";
                   }
                 }
                 ?>
@@ -66,7 +66,7 @@
 		</div>
 	</main>
 
-	<script src="atatic/js/app.js"></script>
+	<script src="static/js/app.js"></script>
 
 </body>
 

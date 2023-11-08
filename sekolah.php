@@ -1,12 +1,13 @@
 <?php include 'config/koneksi.php';
 include 'template.php' ;?>
+<?php $no_ukg = $_SESSION['no_ukg']; ?>
 
 <main class="content">
 	<div class="container-fluid p-0">
 
 		<h1 class="h3 mb-3">Data Sekolah</h1>
 		<?php 
-			$query = "SELECT * FROM user ORDER BY no_ukg";	
+			$query = "SELECT * FROM user WHERE no_ukg='$no_ukg' ORDER BY id_user";	
 			$result = mysqli_query($koneksi,$query);
 			if ($result->num_rows > 0) {
 					while($row = mysqli_fetch_assoc($result)){ 
