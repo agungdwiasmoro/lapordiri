@@ -22,15 +22,15 @@ include 'template.php'; ?>
 					<div class="card-body">
 						<div class="mb-3">
 							<label class="form-label fw-bold">NPSN<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $data['npsn_sekolah']; ?>" disabled>
+							<input type="text" class="form-control" value="<?= $data['npsn_ppl']; ?>" >
 						</div>
 						<div class="mb-3">
 							<label class="form-label fw-bold">NAMA SEKOLAH<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $data['instansi_asal']; ?>" disabled>
+							<input type="text" class="form-control" value="<?= $data['sekolah_ppl']; ?>" >
 						</div>
 					</div>
 					<?php
-					$npsn = $data['npsn_sekolah'];
+					$npsn = $data['npsn_ppl'];
 					$query = "SELECT * FROM kordinator_sekolah WHERE npsn = $npsn ORDER BY id_kordinator";
 					$result = mysqli_query($koneksi, $query);
 					if ($result->num_rows > 0) {
@@ -47,6 +47,7 @@ include 'template.php'; ?>
 								<label class="form-label fw-bold">NAMA LENGKAP DENGAN GELAR<span class="text-danger">*</span></label>
 								<input type="hidden" name="id" value="<?= $row['id_kordinator']; ?>">
 								<input type="text" name="nama" class="form-control" value="<?= $row['nama_kordinator']; ?>">
+								<input type="hidden" name="sekolah" value="<?= $data['sekolah_ppl'];?>">
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">NO TELEPON<span class="text-danger">*</span></label>
@@ -175,8 +176,8 @@ include 'template.php'; ?>
 							</div>
 						</form>
 					</div>
-					<?php }
-					} ?>
+					<?php } 
+					} else {}?>
 				</div>
 				<?php }
 				} ?>

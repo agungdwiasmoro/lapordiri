@@ -109,6 +109,14 @@ include 'template.php' ;?>
 							<?php } ;?>
 						</div>
             <div class="mb-3">
+							<label class="form-label fw-bold">SCAN KTP<span class="text-danger">*</span></label>
+							<?php if ($row['scan_ktp'] == "") {;?>
+							<a href="ktp.php"><button class="btn btn-primary form-control">Upload KTP</button></a>
+							<?php } else {;?>
+								<a href="ktp.php"><button class="btn btn-success form-control">Upload KTP</button></a>
+							<?php } ;?>
+						</div>
+            <div class="mb-3">
 							<label class="form-label fw-bold">SK PEMBAGIAN TUGAS<span class="text-danger"> (2 Tahun Terakhir)</span></label>
 							<?php if($row['sk_tugas'] == "") {;?>
 							<a href="sk_tugas.php"><button class="btn btn-primary form-control">Upload SK Pembagian Tugas</button></a>

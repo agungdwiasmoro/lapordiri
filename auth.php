@@ -33,9 +33,9 @@ if($cek > 0){
 	}else if($data['level']=="admin"){
 		// buat session login dan username
 		$_SESSION['no_ukg'] = $ukg;
-		$_SESSION['level'] = "admini";
+		$_SESSION['level'] = "admin";
 		// alihkan ke halaman dashboard pegawai
-		header("location:halaman_pegawai.php");
+		header("location:admin/main.php");
  
 	}else{
  

@@ -20,31 +20,49 @@ include 'template.php' ;?>
 						<h5 class="card-title mb-0">Informasi Sekolah</h5>
 					</div>
 					<div class="card-body">
-            <div class="mb-3">
-							<label class="form-label fw-bold">NPSN<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $row['npsn_sekolah'];?>" disabled>
-						</div>
-            <div class="mb-3">
-							<label class="form-label fw-bold">NAMA SEKOLAH<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $row['instansi_asal'];?>" disabled>
-						</div>
-            <div class="mb-3">
-							<label class="form-label fw-bold">ALAMAT<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $row['alamat_instansi_asal'];?>" disabled>
-						</div>
-            <div class="mb-3">
-							<label class="form-label fw-bold">KECAMATAN<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $row['kecamatan_instansi_asal'];?>" disabled>
-						</div>
-            <div class="mb-3">
-							<label class="form-label fw-bold">KOTA/KABUPATEN<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $row['kabupaten_instansi_asal'];?>" disabled>
-						</div>
-            <div class="mb-3">
-							<label class="form-label fw-bold">PROVINSI<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $row['provinsi_instansi_asal'];?>" disabled>
-						</div>
-          
+						<form action="" method="post" enctype="multipart/form-data" target="_self">
+							<div class="mb-3">
+								<label class="form-label fw-bold">NPSN<span class="text-danger">*</span></label>
+								<input type="text" class="form-control" value="<?= $row['npsn_ppl'];?>">
+								<input type="hidden" name="id" id="" value="<?= $row['id_user'];?>">
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">NAMA SEKOLAH<span class="text-danger">*</span></label>
+								<input type="text" name="npsn_ppl" class="form-control" value="<?= $row['sekolah_ppl'];?>">
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">KECAMATAN<span class="text-danger">*</span></label>
+								<input type="text" name="kecamatan_ppl" class="form-control" value="<?= $row['kecamatan_ppl'];?>">
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">KOTA/KABUPATEN<span class="text-danger">*</span></label>
+								<input type="text" name="kabupaten_ppl" class="form-control" value="<?= $row['kabupaten_ppl'];?>">
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">PROVINSI<span class="text-danger">*</span></label>
+								<input type="text" name="provinsi_ppl" class="form-control" value="<?= $row['provinsi_ppl'];?>">
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">ALAMAT<span class="text-danger">*</span></label>
+								<textarea name="alamat_ppl" id="" class="form-control"><?= $row['alamat_ppl'];?></textarea>
+							</div>
+							<div class="mb-3">
+								<button class="btn btn-primary form-control" type="submit">Simpan</button>
+							</div>
+						</form>
+						<?php
+							if($_SERVER['REQUEST_METHOD'] == "POST"){
+								require_once('config/koneksi.php');
+								$id = $_POST['id'];
+								$npsn_ppl = $_POST['npsn_ppl'];
+								$sekolah_ppl = $_POST['sekolah_ppl'];
+								$kecamatan_ppl = $_POST['kecamatan_ppl'];
+								$kabupaten_ppl = $_POST['kabupaten_ppl'];
+								$provinsi_ppl = $_POST['provinsi_ppl'];
+								$alamat_ppl = $_POST['alamat_ppl'];
+							}
+								
+						?>
           </div>
         </div>
       </div>

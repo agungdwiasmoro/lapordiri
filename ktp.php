@@ -22,7 +22,7 @@ include 'template.php' ;?>
           <form action="" method="post" enctype="multipart/form-data" target="_self">
             <div class="card-body">
               <div class="mb-3">
-                <label class="form-label fw-bold">BIODATA MAHASISWA<span class="text-danger">*</span></label>
+                <label class="form-label fw-bold">SCAN KTP<span class="text-danger"> *</span></label>
                 <input type="file" name="file" class="form-control">
                 <input type="hidden" name="id" value="<?=$row['id_user'];?>">
               </div>
@@ -42,15 +42,15 @@ include 'template.php' ;?>
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
             if(!in_array($ext,$ekstensi) ) {
-                echo "<script>alert ('Format Tidak Didukung'); document.location='bio.php' </script>"; 
+                echo "<script>alert ('Format Tidak Didukung'); document.location='ktp.php' </script>"; 
             }else{
               if($ukuran < 1044070){		
                 $file = $rand.'_'.$filename;
                 move_uploaded_file($_FILES['file']['tmp_name'], 'assets/'.$rand.'_'.$filename);
-                mysqli_query($koneksi, "UPDATE user SET  bio='$file' WHERE id_user='$id'");
+                mysqli_query($koneksi, "UPDATE user SET  scan_ktp='$file' WHERE id_user='$id'");
                     echo "<script>alert ('Data berhasil ditambahkan'); document.location='berkas.php' </script>"; 
               }else{
-                    echo "<script>alert ('Data gagal ditambahkan'); document.location='bio.php' </script>"; 
+                    echo "<script>alert ('Data gagal ditambahkan'); document.location='ktp.php' </script>"; 
               }
             }
           }

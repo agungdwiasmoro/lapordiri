@@ -1,6 +1,7 @@
 <?php include 'config/koneksi.php' ;?>
 <?php 
 $id = $_POST['id'];
+$rand = rand();
 $ekstensi =  array('png','jpg','jpeg','gif','pdf');
 $filename = $_FILES['file']['name'];
 $ukuran = $_FILES['file']['size'];

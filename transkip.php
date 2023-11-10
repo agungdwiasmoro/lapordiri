@@ -35,13 +35,14 @@ include 'template.php' ;?>
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
 						require_once('config/koneksi.php');
 						$id = $_POST['id'];
+            $rand = rand();
             $ekstensi =  array('png','jpg','jpeg','gif','pdf');
             $filename = $_FILES['file']['name'];
             $ukuran = $_FILES['file']['size'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
             if(!in_array($ext,$ekstensi) ) {
-                echo "<script>alert ('Format Tidak Didukung'); document.location='a1.php' </script>"; 
+                echo "<script>alert ('Format Tidak Didukung'); document.location='transkip.php' </script>"; 
             }else{
               if($ukuran < 1044070){		
                 $file = $rand.'_'.$filename;
@@ -49,7 +50,7 @@ include 'template.php' ;?>
                 mysqli_query($koneksi, "UPDATE user SET  transkip='$file' WHERE id_user='$id'");
                     echo "<script>alert ('Data berhasil ditambahkan'); document.location='berkas.php' </script>"; 
               }else{
-                    echo "<script>alert ('Data gagal ditambahkan'); document.location='a1.php' </script>"; 
+                    echo "<script>alert ('Data gagal ditambahkan'); document.location='transkip.php' </script>"; 
               }
             }
           }

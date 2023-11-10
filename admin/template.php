@@ -1,12 +1,3 @@
-<?php 
-session_start();
-
-// cek apakah yang mengakses halaman ini sudah login
-if($_SESSION['level']==""){
-	header("location:index.php?pesan=gagal");
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +12,9 @@ if($_SESSION['level']==""){
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<title>Lapor Diri PPG | Universitas Muhammadiyah Purworejo</title>
-	<link href="static/css/app.css" rel="stylesheet">
+	<link href="../static/css/app.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -29,25 +22,24 @@ if($_SESSION['level']==""){
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-			
-				<a class="sidebar-brand" href="main.php">
+				<a class="sidebar-brand" href="index.html">
           <span class="align-middle">Lapor Diri PPG</span>
         </a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Kepesertaan PPG Daljab
+						MENU
 					</li>
 
-					<li class="sidebar-item ">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="main.php">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Lapor Diri</span>
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="berkas.php">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Kelengkapan Berkas</span>
+						<a class="sidebar-link" href="lapor_diri.php">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Lapor Diri Peserta</span>
             </a>
 					</li>
 
@@ -56,28 +48,23 @@ if($_SESSION['level']==""){
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="sekolah.php">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Data Sekolah</span>
+						<a class="sidebar-link" href="ppl.php">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Verivikasi Data PPL</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<!-- <li class="sidebar-item">
 						<a class="sidebar-link" href="koordinator.php">
               <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Koordinator Sekolah</span>
             </a>
-					</li>
+					</li> -->
 
 					<li class="sidebar-header">
 						Aksi
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="group.php">
-              <i class="align-middle" data-feather="at-sign"></i> <span class="align-middle">Join Grup WA</span>
-            </a>
-					</li>
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="logout.php">
+						<a class="sidebar-link" href="../logout.php">
               <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Log Out</span>
             </a>
 					</li>
@@ -96,6 +83,15 @@ if($_SESSION['level']==""){
 				</div>
 			</div>
 		</nav>
+    <?php 
+    session_start();
+  
+    // cek apakah yang mengakses halaman ini sudah login
+    if($_SESSION['level']==""){
+      header("location:index.php?pesan=gagal");
+    }
+  
+    ?>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -114,7 +110,7 @@ if($_SESSION['level']==""){
                 <span class="text-dark"><?php echo $_SESSION['no_ukg']; ?></span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="logout.php">Log out</a>
+								<a class="dropdown-item" href="../logout.php">Log out</a>
 							</div>
 						</li>
 					</ul>

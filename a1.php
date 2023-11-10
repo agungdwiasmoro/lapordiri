@@ -35,6 +35,7 @@ include 'template.php' ;?>
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
 						require_once('config/koneksi.php');
 						$id = $_POST['id'];
+            $rand = rand();
             $ekstensi =  array('png','jpg','jpeg','gif','pdf');
             $filename = $_FILES['file']['name'];
             $ukuran = $_FILES['file']['size'];
