@@ -65,11 +65,36 @@ include 'template.php' ;?>
                         <td>:</td>
                         <td><?= $row['sekolah'];?></td>
                       </tr>
+                      <tr>
+                        <td>Sekolah PPL</td>
+                        <td>:</td>
+                        <td><?= $row['sekolah_ppl'];?></td>
+                      </tr>
                     </table>
                   </td>
-                  <td></td>
-                  <td><a href=""><button class="btn btn-primary">Lihat</button></a></td>
-                  <td></td>
+                  <td>
+                    <?php if($row['status'] == "Lapor Diri") {?>
+                      <button class="btn btn-primary"><?= $row['status'];?></button>
+                    <?php } else if ($row['status'] == "Perlu Perbaikan") {?>
+                      <button class="btn btn-warning"><?= $row['status'];?></button>
+                    <?php } else if ($row['status'] == "Terverifikasi") {?>
+                      <button class="btn btn-success"><?= $row['status'];?></button>
+                    <?php } else if ($row['status'] == "Undur Diri") {?>
+                      <button class="btn btn-danger"><?= $row['status'];?></button>
+                    <?php } else {?>
+                      <button class="btn btn-info">Menunggu</button>
+                    <?php };?>
+                  </td>
+                  <td><a href="detail.php?id=<?= $row['id_user'];?>"><button class="btn btn-primary">Lihat</button></a></td>
+                  <td>
+                  <?php if ($row['status_berkas'] == "Perlu Perbaikan") {?>
+                      <button class="btn btn-warning"><?= $row['status_berkas'];?></button>
+                    <?php } else if ($row['status_berkas'] == "Terverifikasi") {?>
+                      <button class="btn btn-success"><?= $row['status_berkas'];?></button>
+                    <?php } else {?>
+                      <button class="btn btn-info">Menunggu</button>
+                    <?php };?>
+                  </td>
                   <td><a href="berkas.php?id=<?= $row['id_user'];?>"><button class="btn btn-primary">Lihat</button></a></td>
                 </tr>
                 <?php }

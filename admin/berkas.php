@@ -172,6 +172,48 @@ include 'template.php' ;?>
               </td>
             </tr>
           </table>
+          <form action="" method="post" enctype="multipart/form-data" target="_self">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">AKSI</h5>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Catatan</label>
+                  <input type="hidden" name="id" value="<?= $row['id_user'];?>">
+                  <textarea name="note" id="" class="form-control"><?=$row['note_berkas'];?></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Status<span class="text-danger">*</span></label>
+                  <select class="form-select mb-3" name="status">
+                    <option value="<?= $row['status_berkas']; ?>" selected><?= $row['status_berkas']; ?></option>
+                    <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+                    <option value="Terverifikasi">Terverifikasi</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-primary form-control" type="submit">UPDATE</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <?php
+					if($_SERVER['REQUEST_METHOD'] == "POST"){
+						require_once('../config/koneksi.php');
+						$id = $_POST['id'];
+            $status = $_POST['status'];
+            $note = $_POST['note'];
+
+            $query = "UPDATE user SET status_berkas= '$status', note_berkas='$note' WHERE id_user = '$id'";
+            $result = mysqli_query($koneksi, $query);
+            if ($result) {
+              echo "<script>alert ('Data berhasil diupdate'); document.location='lapor_diri.php' </script>"; 
+            } else {
+              die('invalid Query : ' . mysqli_error($koneksi));
+            }
+          }
+            
+				?>
         <?php }
           }?>
         </div>

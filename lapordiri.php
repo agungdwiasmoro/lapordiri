@@ -40,7 +40,7 @@ $kp_instansi = $_POST['kp_instansi'];
 $nama_rekening = $_POST['nama_rekening'];
 $npwp = $_POST['npwp'];
 $nama_bank = $_POST['nama_bank'];
-$cabang_bank = $_POST['nama_bank'];
+$cabang_bank = $_POST['cabang_bank'];
 $no_rekening = $_POST['no_rekening'];
 $operator = $_POST['operator'];
 $no_data = $_POST['no_data'];
@@ -52,5 +52,5 @@ $result = mysqli_query($koneksi, $query);
 if ($result) {
   echo "<script>alert ('Data berhasil disimpan'); document.location='berkas.php' </script>"; 
 } else {
-  die('invalid Query : ' . mysqli_error($koneksi));
+   echo "<script>alert ('Terjadi Kesalahan'); document.location='main.php' </script>"; 
 }

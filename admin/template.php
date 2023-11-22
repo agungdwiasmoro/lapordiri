@@ -10,6 +10,7 @@
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link href="../assets/logo/favicon.png" rel="icon">
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<title>Lapor Diri PPG | Universitas Muhammadiyah Purworejo</title>
 	<link href="../static/css/app.css" rel="stylesheet">
@@ -48,16 +49,16 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ppl.php">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Verivikasi Data PPL</span>
+						<a class="sidebar-link" href="sekolah_ppl.php">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Verifikasi Data PPL</span>
             </a>
 					</li>
 
-					<!-- <li class="sidebar-item">
-						<a class="sidebar-link" href="koordinator.php">
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="kordinator.php">
               <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Koordinator Sekolah</span>
             </a>
-					</li> -->
+					</li>
 
 					<li class="sidebar-header">
 						Aksi

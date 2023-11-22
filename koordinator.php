@@ -6,6 +6,7 @@ include 'template.php'; ?>
 	<div class="container-fluid p-0">
 
 		<h1 class="h3 mb-3">Data Koordinator Sekolah</h1>
+		
 		<div class="row">
 			<div class="col-12">
 				<!-- Data Diri -->
@@ -22,11 +23,11 @@ include 'template.php'; ?>
 					<div class="card-body">
 						<div class="mb-3">
 							<label class="form-label fw-bold">NPSN<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $data['npsn_ppl']; ?>" >
+							<input type="text" class="form-control" value="<?= $data['npsn_ppl']; ?>" disabled>
 						</div>
 						<div class="mb-3">
 							<label class="form-label fw-bold">NAMA SEKOLAH<span class="text-danger">*</span></label>
-							<input type="text" class="form-control" value="<?= $data['sekolah_ppl']; ?>" >
+							<input type="text" class="form-control" value="<?= $data['sekolah_ppl']; ?>" disabled>
 						</div>
 					</div>
 					<?php
@@ -40,6 +41,20 @@ include 'template.php'; ?>
 					<!-- Informasi Data Diri -->
 					<div class="card-header">
 						<h5 class="card-title mb-0">Informasi Data Diri Koordinator</h5>
+						<table>
+							<tr>
+								<td>
+									Note
+								</td>
+								<td>
+									: Kordinator diisi Kepala Sekolah
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td> ( Jika peserta Kepala Sekolah diisi dengan Wakil kepala Sekolah )</td>
+							</tr>
+						</table>
 					</div>
 					<form action="kordinatorproccess.php" method="post" enctype="multipart/form-data" target="_self">
 						<div class="card-body">
@@ -110,7 +125,7 @@ include 'template.php'; ?>
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">NO TELEPON<span class="text-danger">*</span></label>
-								<input type="text" name="kontak_penerima" class="form-control" value="<?= $row['kontak']; ?>">
+								<input type="text" name="kontak_penerima" class="form-control" value="<?= $row['kontak_pengiriman']; ?>">
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">PROVINSI<span class="text-danger">*</span></label>
@@ -165,6 +180,11 @@ include 'template.php'; ?>
 						<h5 class="card-title mb-0">Upload Buku Rekening</h5>
 					</div>
 					<div class="card-body">
+						<?php if($row['scan_rekening'] !== "") {?>
+						<div class="mb-3">
+								<a href="assets/<?= $row['scan_rekening'];?>"><button class="btn btn-default form-control">Lihat Berkas</button></a>
+							</div>
+						<?php } else {};?>
 						<form action="rekeningprosses.php" method="post" enctype="multipart/form-data" target="_self">
 							<div class="mb-3">
 								<label for="" class="form-label fw-bold">SCAN BUKU TABUNGAN</label>

@@ -55,17 +55,17 @@ if($_SESSION['level']==""){
 						Informasi PPL
 					</li>
 
-					<li class="sidebar-item">
+					 <li class="sidebar-item">
 						<a class="sidebar-link" href="sekolah.php">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Data Sekolah</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					  <li class="sidebar-item">
 						<a class="sidebar-link" href="koordinator.php">
               <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Koordinator Sekolah</span>
             </a>
-					</li>
+					</li> 
 
 					<li class="sidebar-header">
 						Aksi

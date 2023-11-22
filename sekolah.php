@@ -5,7 +5,7 @@ include 'template.php' ;?>
 <main class="content">
 	<div class="container-fluid p-0">
 
-		<h1 class="h3 mb-3">Data Sekolah</h1>
+		<h1 class="h3 mb-3">Data Sekolah PPL</h1>
 		<?php 
 			$query = "SELECT * FROM user WHERE no_ukg='$no_ukg' ORDER BY id_user";	
 			$result = mysqli_query($koneksi,$query);
@@ -17,18 +17,18 @@ include 'template.php' ;?>
 				<!-- Data Diri -->
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title mb-0">Informasi Sekolah</h5>
+						<h5 class="card-title mb-0">Informasi Sekolah PPL</h5>
 					</div>
 					<div class="card-body">
 						<form action="" method="post" enctype="multipart/form-data" target="_self">
 							<div class="mb-3">
 								<label class="form-label fw-bold">NPSN<span class="text-danger">*</span></label>
-								<input type="text" class="form-control" value="<?= $row['npsn_ppl'];?>">
+								<input type="text" name="npsn_ppl" class="form-control" value="<?= $row['npsn_ppl'];?>">
 								<input type="hidden" name="id" id="" value="<?= $row['id_user'];?>">
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">NAMA SEKOLAH<span class="text-danger">*</span></label>
-								<input type="text" name="npsn_ppl" class="form-control" value="<?= $row['sekolah_ppl'];?>">
+								<input type="text" name="sekolah_ppl" class="form-control" value="<?= $row['sekolah_ppl'];?>">
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">KECAMATAN<span class="text-danger">*</span></label>
@@ -60,7 +60,15 @@ include 'template.php' ;?>
 								$kabupaten_ppl = $_POST['kabupaten_ppl'];
 								$provinsi_ppl = $_POST['provinsi_ppl'];
 								$alamat_ppl = $_POST['alamat_ppl'];
-							}
+
+								$query = "UPDATE user SET npsn_ppl ='$npsn_ppl', sekolah_ppl='$sekolah_ppl', provinsi_ppl='$provinsi_ppl', kabupaten_ppl='$kabupaten_ppl', kecamatan_ppl='$kecamatan_ppl', alamat_ppl='$alamat_ppl' WHERE id_user = '$id'";
+								$result = mysqli_query($koneksi, $query);
+								if ($result) {
+									echo "<script>alert ('Data berhasil diupdate'); document.location='sekolah.php' </script>"; 
+								} else {
+									echo "<script>alert ('Data Gagal'); document.location='sekolah.php' </script>"; 
+								}
+									}
 								
 						?>
           </div>

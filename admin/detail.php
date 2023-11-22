@@ -1,4 +1,4 @@
-<?php include 'config/koneksi.php' ;?>
+<?php include '../config/koneksi.php' ;?>
 <?php include 'template.php' ;?>
 <?php $no_ukg = $_SESSION['no_ukg'] ;?>
 
@@ -7,27 +7,19 @@
 
 		<h1 class="h3 mb-3">Lapor Diri Peserta PPG</h1>
 		<?php 
-			$query = "SELECT * FROM user where no_ukg = $no_ukg ORDER BY id_user ";	
+      $id = $_GET['id'];
+			$query = "SELECT * FROM user where id_user='$id' ";	
 			$result = mysqli_query($koneksi,$query);
 			if ($result->num_rows > 0) {
 					while($row = mysqli_fetch_assoc($result)){ 
 		?>
 		<div class="row">
 			<div class="col-12">
-				<form action="lapordiri.php" method="post" enctype="multipart/form-data" target="_self">
+				<form action="" method="post" enctype="multipart/form-data" target="_self">
 					<!-- Data Diri -->
 					<div class="card">
 						<div class="card-header">
 							<h5 class="card-title mb-0">INFORMASI DATA DIRI</h5>
-                          	<label class="form-label fw-bold">Status Berkas</label>
-							<?php if ($row['status'] == "Perlu Perbaikan") {?>
-							<button class="btn btn-warning form-control"><?= $row['status'];?></button>
-							<textarea class="form-control" ><?= $row['note'];?></textarea>
-							<?php } else if ($row['status'] == "Terverifikasi") {?>
-								<button class="btn btn-success form-control"><?= $row['status'];?></button>
-							<?php } else {?>
-								<button class="btn btn-info form-control">Menunggu Konfirmasi</button>
-							<?php };?>
 						</div>
 						<div class="card-body">
 							<div class="mb-3">
@@ -38,6 +30,10 @@
 							<div class="mb-3">
 								<label class="form-label fw-bold">No UKG</label>
 								<input type="text" name="no_ukg" class="form-control" value="<?= $row['no_ukg'];?>" >
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">NIM</label>
+								<input type="text" name="nim" class="form-control" value="0" disabled>
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">NIK</label>
@@ -102,23 +98,23 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">Jabatan Fungsional</label>
-								<input type="text" name="jabatan" class="form-control" value="<?= $row['jabatan'];?>" disabled>
+								<input type="text" name="jabatan" class="form-control" value="<?= $row['jabatan'];?>" >
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">LPTK</label>
-								<input type="text" name="lptk" class="form-control" value="Universitas Muhammadiyah Purworejo" disabled>
+								<input type="text" name="lptk" class="form-control" value="Universitas Muhammadiyah Purworejo" >
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">Bidang Studi PPG</label>
-								<input type="text" name="bidang_studi" class="form-control" value="<?= $row['bidang_studi'];?>" disabled>
+								<input type="text" name="bidang_studi" class="form-control" value="<?= $row['bidang_studi'];?>" >
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">Nama Kelas</label>
-								<input type="text" name="kelas" class="form-control" value="<?= $row['nama_kelas'];?>" disabled>
+								<input type="text" name="kelas" class="form-control" value="<?= $row['nama_kelas'];?>" >
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">Sumber Pembiayaan</label>
-								<input type="text" name="sumber_pembiayaan" class="form-control" value="APBN - Pusat" disabled>
+								<input type="text" name="sumber_pembiayaan" class="form-control" value="APBN - Pusat" >
 							</div>
 						</div>
 					</div>
@@ -250,24 +246,90 @@
 						<div class="card-body">
 							<div class="mb-3">
 								<label class="form-label fw-bold">Nama Operator</label>
-								<input type="text" name="operator" class="form-control" value="<?= $row['operator'];?>" >
+								<input type="text" name="operator" class="form-control" value="<?=$row['operator'];?>" >
 							</div>
 							<div class="mb-3">
 								<label class="form-label fw-bold">No. Hp</label>
-								<input type="text" name="no_data" class="form-control" value="<?= $row['no_data'];?>" >
+								<input type="text" name="no_data" class="form-control" value="<?=$row['no_data'];?>" >
 							</div>
-						</div>
-					</div>
-					
+            </div>
+          </div>
+					<?php
+					$npsn = $row['npsn_ppl'];
+					$query1 = "SELECT * FROM kordinator_sekolah where npsn='$npsn' ";	
+					$result = mysqli_query($koneksi,$query1);
+					if ($result->num_rows > 0) {
+					while($data = mysqli_fetch_assoc($result)){ 
+						?>
 					<div class="card">
+						<div class="card-header">
+							<h5 class="card-title mb-0">INFORMASI KORDINATOR PPL</h5>
+						</div>
 						<div class="card-body">
 							<div class="mb-3">
-								<button class="btn btn-primary form-control" type="submit">Simpan</button>
+								<label class="form-label fw-bold">Sekolah PPL</label>
+								<input type="text"  class="form-control" value="<?= $row['sekolah_ppl'];?>" >
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">Nama Kordinator</label>
+								<input type="text"  class="form-control" value="<?= $data['nama_kordinator'];?>" >
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">Nama Bank</label>
+								<input type="text"  class="form-control" value="<?= $data['nama_bank'];?>" >
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">Nama Rekening</label>
+								<input type="text"  class="form-control" value="<?= $data['nama_rekening'];?>" >
+							</div>
+							<div class="mb-3">
+								<label class="form-label fw-bold">No. Rekening</label>
+								<input type="text"  class="form-control" value="<?= $data['no_rekening'];?>" >
+							</div>
+            </div>
+          </div>
+					<?php }};?>
+          <div class="card">
+						<div class="card-header">
+							<h5 class="card-title mb-0">AKSI</h5>
+						</div>
+            <div class="card-body">
+							<div class="mb-3">
+								<label class="form-label fw-bold">Catatan</label>
+								<textarea name="note" id="" class="form-control"><?=$row['note'];?></textarea>
+							</div>
+              <div class="mb-3">
+								<label class="form-label fw-bold">Status<span class="text-danger">*</span></label>
+								<select class="form-select mb-3" name="status">
+									<option value="<?= $row['status']; ?>" selected><?= $row['status']; ?></option>
+									<option value="Perlu Perbaikan">Perlu Perbaikan</option>
+									<option value="Terverifikasi">Terverifikasi</option>
+									<option value="Undur Diri">Undur Diri</option>
+								</select>
+							</div>
+              <div class="mb-3">
+								<button class="btn btn-primary form-control" type="submit">UPDATE</button>
 							</div>
 						</div>
 					</div>
-					
 				</form>
+        <?php
+					if($_SERVER['REQUEST_METHOD'] == "POST"){
+						require_once('../config/koneksi.php');
+						$id = $_POST['id'];
+            $status = $_POST['status'];
+            $note = $_POST['note'];
+
+            $query = "UPDATE user SET status= '$status', note='$note' WHERE id_user = '$id'";
+            $result = mysqli_query($koneksi, $query);
+            if ($result) {
+              echo "<script>alert ('Data berhasil diupdate'); document.location='lapor_diri.php' </script>"; 
+            } else {
+              die('invalid Query : ' . mysqli_error($koneksi));
+            }
+          }
+            
+				?>
 			</div>
 		</div>
 		<?php }
